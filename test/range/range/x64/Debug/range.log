@@ -1,0 +1,10 @@
+﻿  range.cpp
+C:\Users\502218\Documents\test\range\range\range.cpp(16,12): error C2143: syntax error: missing ':' before '...'
+C:\Users\502218\Documents\test\range\range\range.cpp(16,12): error C2059: syntax error: '...'
+C:\Users\502218\Documents\test\range\range\range.cpp(19,13): error C2143: syntax error: missing ':' before '...'
+C:\Users\502218\Documents\test\range\range\range.cpp(19,13): error C2059: syntax error: '...'
+C:\Users\502218\Documents\test\range\range\range.cpp(22,13): error C2143: syntax error: missing ':' before '...'
+C:\Users\502218\Documents\test\range\range\range.cpp(22,13): error C2059: syntax error: '...'
+C:\Users\502218\Documents\test\range\range\range.cpp(25,13): error C2143: syntax error: missing ':' before '...'
+C:\Users\502218\Documents\test\range\range\range.cpp(25,13): error C2059: syntax error: '...'
+C:\Users\502218\Documents\test\range\range\range.cpp(16,10): error C2196: case value '0' already used
