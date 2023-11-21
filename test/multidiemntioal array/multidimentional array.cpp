@@ -27,7 +27,7 @@ int main() {
 
 	cout << "row 1 total = " << user[0][0] + user[0][1] + user[0][2] << endl;
 	cout << "row 2 total = " << user[1][0] + user[1][1] + user[1][2] << endl;
-	cout << "row 1 total = " << user[2][0] + user[2][1] + user[2][2] << endl;
+	cout << "row 3 total = " << user[2][0] + user[2][1] + user[2][2] << endl;
 
 	cout << "column 1 total = " << user[0][0] + user[1][0] + user[2][0] << endl;
 	cout << "column 2 total = " << user[0][1] + user[1][1] + user[2][1] << endl;
