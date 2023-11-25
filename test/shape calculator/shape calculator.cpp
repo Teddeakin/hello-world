@@ -1,13 +1,14 @@
 #include <iostream>
 using namespace std;
 //global variables for calculations
-double pi = 3.145159, len1, len2, total;
+double pi = 3.145159;
 //declare functions here
 
-void square();
-void rectangle();
-void circle();
-void triangle();
+double square(double len1);
+double rectangle(double len1, double len2);
+double circle(double len1);
+double triangle(double len1, double len2);
+
 
 int main() {
 
@@ -19,56 +20,69 @@ int main() {
     cout << "What calculation do you want to perform" << endl;
     cout << "1: Area of square\n2: Area of rectangle\n3: Area of circle\n4: Area of Triangle" << endl;
 
-
+    double returnedtotal = 0;
+    double user1 = 0;
+    double user2 = 0;
     int choice;
     cin >> choice;
 
-
     if (choice == 1) {
-        square();
+        cout << "What is the squares width/height?" << endl;
+        cin >> user1;
+        square(user1);
+        returnedtotal = square(user1);
     }
     else if (choice == 2) {
-        rectangle();
+        cout << "What is the width of the rectagle" << endl;
+        cin >> user1;
+        cout << "What is the height of the rectagle" << endl;
+        cin >> user2;
+        rectangle(user1, user2);
+        returnedtotal = rectangle(user1, user2);
     }
     else if (choice == 3) {
-        circle();
+        cout << "What is the radius of the circle?" << endl;
+        cin >> user1;
+        circle(user1);
+        returnedtotal = circle(user1);
     }
     else if (choice == 4) {
-        triangle();
+        cout << "What is the base length of the triangle" << endl;
+        cin >> user1;
+        cout << "What is the height of the triangle" << endl;
+        cin >> user2;
+        triangle(user1, user2);
+        returnedtotal = triangle(user1, user2);
     }
+    else {
+        cout << "input valid number" << endl;
+    }
+
 
 
 
     cout << "The area of the shape is" << endl;
     cout << "------------------------" << endl;
-    cout << total << endl;
+    cout << returnedtotal << endl;
 
 
     return 0;
 }
 
-void square() {
-    cout << "What is the squares width/height?" << endl;
-    cin >> len1;
-    total = len1 * len1;
+double square(double len1) {
+    double total = len1 * len1;
+    return total;
 }
-void rectangle() {
-    cout << "What is the width of the rectagle" << endl;
-    cin >> len1;
-    cout << "What is the height of the rectagle" << endl;
-    cin >> len2;
-    total = len1 * len2;
+double rectangle(double len1, double len2) {
+    double total = len1 * len2;
+    return total;
 }
-void circle() {
-    cout << "What is the radius of the circle?" << endl;
-    cin >> len1;
-    total = pi * (len1 * len1);
+double circle(double len1) {
+    double total = pi * (len1 * len1);
+    return total;
 }
-void triangle() {
-    cout << "What is the base length of the triangle" << endl;
-    cin >> len1;
-    cout << "What is the height of the triangle" << endl;
-    cin >> len2;
-    total = (len1 * len2) / 2;
+double triangle(double len1, double len2) {
+    double total = (len1 * len2) / 2;
+    return total;
 }
 //define functions here
