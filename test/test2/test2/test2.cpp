@@ -4,187 +4,59 @@ using namespace std;
 
 int main() {
 
-	int score = 0; // data type to add a "score" for each question answered correctly
-	string england; // variables for the users input on each question (could simplify this by erasing the users input after each question)
-	string germany;
-	string italy;
-	string russia;
-	string hungary;
-	string france;
-	string portugal;
-	string czech;
-	string scotland;
-	string netherland;
+	char alphabet[26] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+	int a[] = { 1, 3, 5, 7, 9 };
+	int interger[] = { 10, 15, 25, 35, 50, 75 };
+	int value[] = { 10, 88, 4, 21, 345, 99, 17 };
+	int odd[101];
 
-	cout << "Welcome to the quiz on the 10 capital cities of europe!" << endl << "what is the capital city of England? "; // example text for each question to prompt the user to input an answer
-	std::cin >> england; // the variable that stores the users answer 
-
-
-	if (england == "London") { // If they inputted "London" then the next two lines of code will go through
-		cout << "correct! " << endl; // displaying to the users that the inputted the correct answer
-		score++; // adding a number to the score
+	for (int i = 0; i < 26; i++) {
+		cout << alphabet[i] << ", ";
+		if (i == 25) {
+			cout << endl << endl;
+		}
 	}
-
-	else if (england == "london") { // if they didn't capitalise the answer the same sequence will also play as before
-
-		cout << "correct! " << endl; // displaying to the user that they inputted the correct answer
-		score++; // adding a number to the score
+	for (int i = 13; i < 26; i++) {
+		cout << alphabet[i] << ", ";
+		if (i == 25) {
+			cout << endl << endl;
+		}
 	}
-	else { // if the user inputtes anything other than "London" or "london"
-		cout << "incorrect " << endl; // displaying to the user they inputted the incorrect answer
+	for (int i = 0; i < 5; i++) {
+		int reverse = 4 - i;
+		cout << a[reverse] << ", ";
+		if (i == 4) {
+			cout << endl << endl;
+		}
 	}
+	int total = 0;
 
-	cout << "What is the capital city of Germany? ";
-	std::cin >> germany;
-
-	if (germany == "Berlin") {
-		cout << "correct! " << endl;;
-		score++;
+	for (int i = 0; i < 6; i++) {
+		total = total + interger[i];
+		if (i == 5) {
+			int sum = total / (i + 1);
+			cout << sum << endl << endl;
+		}
 	}
-	else if (germany == "berlin") {
-
-		cout << "correct! " << endl;
-		score++;
+	int total2 = 100;
+	for (int i = 0; i < 6; i++) {
+		if (total < value[i]) {
+			total = value[i];
+		}
+		if (total2 > value[i]) {
+			total2 = value[i];
+		}
+		if (i == 5) {
+			cout << "lowest value: " << total2 << endl;
+			cout << "highest value: " << total << endl << endl;
+		}
 	}
-	else {
-		cout << "incorrect " << endl;
+	for (int i = 0; i < 101; i++) {
+		odd[i] = i;
 	}
-
-	cout << "What is the capital city of Italy? ";
-	std::cin >> italy;
-
-	if (italy == "Rome") {
-		cout << "correct! " << endl;
-		score++;
+	for (int i = 0; i < 101; i++) {
+		if (odd[i] % 2 != 0) {
+			cout << odd[i] << ", ";
+		}
 	}
-
-	else if (italy == "rome") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of Russia? ";
-	std::cin >> russia;
-
-	if (russia == "Moscow") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (russia == "moscow") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of Hungary? ";
-	std::cin >> hungary;
-
-	if (hungary == "Budapest") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (hungary == "budapest") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of France? ";
-	std::cin >> france;
-
-	if (france == "Paris") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (france == "paris") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of Portugal? ";
-	std::cin >> portugal;
-
-	if (portugal == "Libson") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (portugal == "libson") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of Czech Republic? ";
-	std::cin >> czech;
-
-	if (czech == "Prague") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (czech == "prague") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of Scotland? ";
-	std::cin >> scotland;
-
-	if (scotland == "Edinburgh") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (scotland == "edinburgh") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of the Netherlands? ";
-	std::cin >> netherland;
-
-	if (netherland == "Amsterdam") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (netherland == "amsterdam") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "thank you for taking this quiz, your overall score was " << score; // after each if statement has been used it will display that it is the end of the quiz and the number of questions the user got correct
 }

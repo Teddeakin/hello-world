@@ -1,8 +1,5 @@
 #include <iostream>
 using namespace std;
-//global variables for calculations
-double pi = 3.145159;
-//declare functions here
 
 double square(double len1);
 double rectangle(double len1, double len2);
@@ -78,6 +75,7 @@ double rectangle(double len1, double len2) {
     return total;
 }
 double circle(double len1) {
+    double pi = 3.145159;
     double total = pi * (len1 * len1);
     return total;
 }
@@ -85,4 +83,3 @@ double triangle(double len1, double len2) {
     double total = (len1 * len2) / 2;
     return total;
 }
-//define functions here
