@@ -1,190 +1,108 @@
 #include <iostream>
-#include <string>
+#include <cmath>
 using namespace std;
+
+void menu();
+double calculation(double input1, double input2, double answer);
+double triple(double input1, double input2, double input3, double answer);
 
 int main() {
 
-	int score = 0; // data type to add a "score" for each question answered correctly
-	string england; // variables for the users input on each question (could simplify this by erasing the users input after each question)
-	string germany;
-	string italy;
-	string russia;
-	string hungary;
-	string france;
-	string portugal;
-	string czech;
-	string scotland;
-	string netherland;
+	double uinput1 = 0;
+	double uinput2 = 0;
+	double uinput3 = 0;
+	int uanswer = 0;
+	int answer = 0;
 
-	cout << "Welcome to the quiz on the 10 capital cities of europe!" << endl << "what is the capital city of England? "; // example text for each question to prompt the user to input an answer
-	std::cin >> england; // the variable that stores the users answer 
+	while (uanswer != 5) {
+		menu();
 
+		while (!(cin >> uanswer) || uanswer > 5 || uanswer <= 0) {
+			cout << "please enter valid number" << endl;
+			menu();
+			cin.clear();
+			cin.ignore(123, '\n');
+		}
 
-	if (england == "London") { // If they inputted "London" then the next two lines of code will go through
-		cout << "correct! " << endl; // displaying to the users that the inputted the correct answer
-		score++; // adding a number to the score
+		if (uanswer == 5) {
+			return 0;
+		}
+
+		cout << "are you using 2 or 3 numbers?" << endl;
+		while (!(cin >> answer) || answer > 3 || answer <= 1) {
+			cout << "please enter valid number" << endl;
+			cout << "are you using 2 or 3 numbers?" << endl;
+			cin.clear();
+			cin.ignore(123, '\n');
+		}
+		if (answer == 2) {
+			cout << "input two numbers to use in calculation" << endl;
+			while (!(cin >> uinput1) || !(cin >> uinput2)) {
+				cout << "please enter valid numbers" << endl;
+				cin.clear();
+				cin.ignore(123, '\n');
+			}
+
+			calculation(uinput1, uinput2, uanswer);
+
+			double returnedTotal = calculation(uinput1, uinput2, uanswer);
+			cout << returnedTotal << endl;
+		}
+		if (answer == 3) {
+			cout << "input three numbers to use in calculation" << endl;
+			while (!(cin >> uinput1) || !(cin >> uinput2) || !(cin >> uinput3)) {
+				cout << "please enter valid numbers" << endl;
+				cin.clear();
+				cin.ignore(123, '\n');
+			}
+			triple(uinput1, uinput2, uinput3, uanswer);
+
+			double returnedtotal = triple(uinput1, uinput2, uinput3, uanswer);
+			cout << returnedtotal << endl;
+		}
 	}
+}
 
-	else if (england == "london") { // if they didn't capitalise the answer the same sequence will also play as before
+void menu() {
+	cout << "pick an option" << endl << "1. addition" << endl << "2. subtraction" << endl << "3. multiplication" << endl << "4. division" << endl << "5. exit" << endl;
 
-		cout << "correct! " << endl; // displaying to the user that they inputted the correct answer
-		score++; // adding a number to the score
+}
+double calculation(double input1, double input2, double answer) {
+	double total = 0;
+	if (answer == 1) {
+		total = input1 + input2;
 	}
-	else { // if the user inputtes anything other than "London" or "london"
-		cout << "incorrect " << endl; // displaying to the user they inputted the incorrect answer
+	else if (answer == 2) {
+		total = input1 - input2;
 	}
-
-	cout << "What is the capital city of Germany? ";
-	std::cin >> germany;
-
-	if (germany == "Berlin") {
-		cout << "correct! " << endl;;
-		score++;
+	else if (answer == 3) {
+		total = input1 * input2;
 	}
-	else if (germany == "berlin") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of Italy? ";
-	std::cin >> italy;
-
-	if (italy == "Rome") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (italy == "rome") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of Russia? ";
-	std::cin >> russia;
-
-	if (russia == "Moscow") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (russia == "moscow") {
-
-		cout << "correct! " << endl;
-		score++;
+	else if (answer == 4) {
+		total = input1 / input2;
 	}
 	else {
-		cout << "incorrect " << endl;
+		cout << "input valid number" << endl;
 	}
+	return total;
 
-	cout << "What is the capital city of Hungary? ";
-	std::cin >> hungary;
-
-	if (hungary == "Budapest") {
-		cout << "correct! " << endl;
-		score++;
+}
+double triple(double input1, double input2, double input3, double answer) {
+	double total = 0;
+	if (answer == 1) {
+		total = input1 + input2 + input3;
 	}
-
-	else if (hungary == "budapest") {
-
-		cout << "correct! " << endl;
-		score++;
+	else if (answer == 2) {
+		total = input1 - input2 - input3;
 	}
-	else {
-		cout << "incorrect " << endl;
+	else if (answer == 3) {
+		total = input1 * input2 * input3;
 	}
-
-	cout << "What is the capital city of France? ";
-	std::cin >> france;
-
-	if (france == "Paris") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (france == "paris") {
-
-		cout << "correct! " << endl;
-		score++;
+	else if (answer == 4) {
+		total = input1 / input2 / input3;
 	}
 	else {
-		cout << "incorrect " << endl;
+		cout << "input valid number" << endl;
 	}
-
-	cout << "What is the capital city of Portugal? ";
-	std::cin >> portugal;
-
-	if (portugal == "Libson") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (portugal == "libson") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of Czech Republic? ";
-	std::cin >> czech;
-
-	if (czech == "Prague") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (czech == "prague") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of Scotland? ";
-	std::cin >> scotland;
-
-	if (scotland == "Edinburgh") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (scotland == "edinburgh") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "What is the capital city of the Netherlands? ";
-	std::cin >> netherland;
-
-	if (netherland == "Amsterdam") {
-		cout << "correct! " << endl;
-		score++;
-	}
-
-	else if (netherland == "amsterdam") {
-
-		cout << "correct! " << endl;
-		score++;
-	}
-	else {
-		cout << "incorrect " << endl;
-	}
-
-	cout << "thank you for taking this quiz, your overall score was " << score; // after each if statement has been used it will display that it is the end of the quiz and the number of questions the user got correct
+	return total;
 }
