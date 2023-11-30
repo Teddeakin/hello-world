@@ -1,62 +1,108 @@
 #include <iostream>
-#include <string>
+#include <cmath>
 using namespace std;
+
+void menu();
+double calculation(double input1, double input2, double answer);
+double triple(double input1, double input2, double input3, double answer);
 
 int main() {
 
-	char alphabet[26] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-	int a[] = { 1, 3, 5, 7, 9 };
-	int interger[] = { 10, 15, 25, 35, 50, 75 };
-	int value[] = { 10, 88, 4, 21, 345, 99, 17 };
-	int odd[101];
+	double uinput1 = 0;
+	double uinput2 = 0;
+	double uinput3 = 0;
+	int uanswer = 0;
+	int answer = 0;
 
-	for (int i = 0; i < 26; i++) {
-		cout << alphabet[i] << ", ";
-		if (i == 25) {
-			cout << endl << endl;
-		}
-	}
-	for (int i = 13; i < 26; i++) {
-		cout << alphabet[i] << ", ";
-		if (i == 25) {
-			cout << endl << endl;
-		}
-	}
-	for (int i = 0; i < 5; i++) {
-		int reverse = 4 - i;
-		cout << a[reverse] << ", ";
-		if (i == 4) {
-			cout << endl << endl;
-		}
-	}
-	int total = 0;
+	while (uanswer != 5) {
+		menu();
 
-	for (int i = 0; i < 6; i++) {
-		total = total + interger[i];
-		if (i == 5) {
-			int sum = total / (i + 1);
-			cout << sum << endl << endl;
+		while (!(cin >> uanswer) || uanswer > 5 || uanswer <= 0) {
+			cout << "please enter valid number" << endl;
+			menu();
+			cin.clear();
+			cin.ignore(123, '\n');
+		}
+
+		if (uanswer == 5) {
+			return 0;
+		}
+
+		cout << "are you using 2 or 3 numbers?" << endl;
+		while (!(cin >> answer) || answer > 3 || answer <= 1) {
+			cout << "please enter valid number" << endl;
+			cout << "are you using 2 or 3 numbers?" << endl;
+			cin.clear();
+			cin.ignore(123, '\n');
+		}
+		if (answer == 2) {
+			cout << "input two numbers to use in calculation" << endl;
+			while (!(cin >> uinput1) || !(cin >> uinput2)) {
+				cout << "please enter valid numbers" << endl;
+				cin.clear();
+				cin.ignore(123, '\n');
+			}
+
+			calculation(uinput1, uinput2, uanswer);
+
+			double returnedTotal = calculation(uinput1, uinput2, uanswer);
+			cout << returnedTotal << endl;
+		}
+		if (answer == 3) {
+			cout << "input three numbers to use in calculation" << endl;
+			while (!(cin >> uinput1) || !(cin >> uinput2) || !(cin >> uinput3)) {
+				cout << "please enter valid numbers" << endl;
+				cin.clear();
+				cin.ignore(123, '\n');
+			}
+			triple(uinput1, uinput2, uinput3, uanswer);
+
+			double returnedtotal = triple(uinput1, uinput2, uinput3, uanswer);
+			cout << returnedtotal << endl;
 		}
 	}
-	int total2 = 100;
-	for (int i = 0; i < 6; i++) {
-		if (total < value[i]) {
-			total = value[i];
-		}
-		if (total2 > value[i]) {
-			total2 = value[i];
-		}
-		if (i == 5) {
-			cout << "lowest value: " << total2 << endl;
-			cout << "highest value: " << total << endl << endl;
-		}
+}
+
+void menu() {
+	cout << "pick an option" << endl << "1. addition" << endl << "2. subtraction" << endl << "3. multiplication" << endl << "4. division" << endl << "5. exit" << endl;
+
+}
+double calculation(double input1, double input2, double answer) {
+	double total = 0;
+	if (answer == 1) {
+		total = input1 + input2;
 	}
-	for (int i = 0; i < 101; i++) {
-		odd[i] = i;
+	else if (answer == 2) {
+		total = input1 - input2;
 	}
-	for (int i = 0; i < 101; i++) {
-		if (odd[i] % 2 != 0) {
-			cout << odd[i] << ", ";
-		}
+	else if (answer == 3) {
+		total = input1 * input2;
 	}
+	else if (answer == 4) {
+		total = input1 / input2;
+	}
+	else {
+		cout << "input valid number" << endl;
+	}
+	return total;
+
+}
+double triple(double input1, double input2, double input3, double answer) {
+	double total = 0;
+	if (answer == 1) {
+		total = input1 + input2 + input3;
+	}
+	else if (answer == 2) {
+		total = input1 - input2 - input3;
+	}
+	else if (answer == 3) {
+		total = input1 * input2 * input3;
+	}
+	else if (answer == 4) {
+		total = input1 / input2 / input3;
+	}
+	else {
+		cout << "input valid number" << endl;
+	}
+	return total;
 }
