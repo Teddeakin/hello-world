@@ -4,7 +4,7 @@ using namespace std;
 
 void menu();
 double calculation(double input1, double input2, double answer);
-double triple(double input1, double input2, double input3, double answer);
+double triple(double input1, double input2, double input3, double answer, double answer2);
 
 int main() {
 
@@ -46,7 +46,7 @@ int main() {
 			calculation(uinput1, uinput2, uanswer);
 
 			double returnedTotal = calculation(uinput1, uinput2, uanswer);
-			cout << returnedTotal << endl;
+			cout << returnedTotal << endl << endl;
 		}
 		if (answer == 3) {
 			cout << "input three numbers to use in calculation" << endl;
@@ -55,10 +55,24 @@ int main() {
 				cin.clear();
 				cin.ignore(123, '\n');
 			}
-			triple(uinput1, uinput2, uinput3, uanswer);
+			cout << "what would you like to use for third number? " << endl;
+			menu();
+			while (!(cin >> answer) || answer > 5 || answer <= 0) {
+				cout << "please enter valid number" << endl;
+				menu();
+				cin.clear();
+				cin.ignore(123, '\n');
+			}
 
-			double returnedtotal = triple(uinput1, uinput2, uinput3, uanswer);
-			cout << returnedtotal << endl;
+			if (answer == 5) {
+				return 0;
+			}
+
+
+			triple(uinput1, uinput2, uinput3, uanswer, answer);
+
+			double returnedtotal = triple(uinput1, uinput2, uinput3, uanswer, answer);
+			cout << returnedtotal << endl << endl;
 		}
 	}
 }
@@ -87,19 +101,63 @@ double calculation(double input1, double input2, double answer) {
 	return total;
 
 }
-double triple(double input1, double input2, double input3, double answer) {
+double triple(double input1, double input2, double input3, double answer, double answer2) {
 	double total = 0;
 	if (answer == 1) {
-		total = input1 + input2 + input3;
+		if (answer2 == 1) {
+			total = input1 + input2 + input3;
+		}
+		if (answer2 == 2) {
+			total = input1 + input2 - input3;
+		}
+		if (answer2 == 3) {
+			total = input1 + (input2 * input3);
+		}
+		if (answer2 == 4) {
+			total = input1 + (input2 / input3);
+		}
 	}
 	else if (answer == 2) {
-		total = input1 - input2 - input3;
+		if (answer2 == 1) {
+			total = input1 - input2 + input3;
+		}
+		if (answer2 == 2) {
+			total = input1 - input2 - input3;
+		}
+		if (answer2 == 3) {
+			total = input1 - (input2 * input3);
+		}
+		if (answer2 == 4) {
+			total = input1 - (input2 / input3);
+		}
 	}
 	else if (answer == 3) {
-		total = input1 * input2 * input3;
+		if (answer2 == 1) {
+			total = input1 * input2 + input3;
+		}
+		if (answer2 == 2) {
+			total = input1 * input2 - input3;
+		}
+		if (answer2 == 3) {
+			total = input1 * input2 * input3;
+		}
+		if (answer2 == 4) {
+			total = input1 * (input2 / input3);
+		}
 	}
 	else if (answer == 4) {
-		total = input1 / input2 / input3;
+		if (answer2 == 1) {
+			total = input1 / input2 + input3;
+		}
+		if (answer2 == 2) {
+			total = input1 / input2 - input3;
+		}
+		if (answer2 == 3) {
+			total = input1 / input2 * input3;
+		}
+		if (answer2 == 1) {
+			total = input1 / input2 / input3;
+		}
 	}
 	else {
 		cout << "input valid number" << endl;
