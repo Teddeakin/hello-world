@@ -1,0 +1,3 @@
+﻿  slot machine.cpp
+C:\Users\502218\Documents\GitHub\hello-world\test\slot machine\slot machine.cpp(11,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  slot machine.vcxproj -> C:\Users\502218\Documents\GitHub\hello-world\test\slot machine\x64\Debug\slot machine.exe
