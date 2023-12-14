@@ -28,19 +28,17 @@ int main() {
 		}
 
 		
-			try {
+			try { // used as a way to check for errors without breaking code
 				cout << "are you using 2 or 3 numbers?" << endl;
-				cin >> answer;
-				if (cin.fail() || answer > 3 || answer <= 1) {
-					throw 505;
+				if (!(cin >> answer) || answer > 3 || answer <= 1) {
+					throw 505; // signals the catch that there is a problem with user input
 				}
 			}
-			catch (...) {
-				cout << "please enter a valid number" << endl;
+			catch (...) { // block off code for errors
+				cout << "please enter a valid number" << endl << endl;
 				cin.clear();
 				cin.ignore(123, '\n');
 			}
-		
 
 		if (answer == 2) { // if the user wants to use 2 numbers
 			cout << "input two numbers to use in calculation" << endl;
@@ -52,8 +50,10 @@ int main() {
 
 			calculation(uinput1, uinput2, uanswer); // calls on the calculation function to use the numbers inputted by user for calculation
 
-			double returnedTotal = calculation(uinput1, uinput2, uanswer); // makes this value equal to the returned value (total) from the function
-			cout << returnedTotal << endl << endl;// two endl to separate this from the next calculation
+			double returnedtotal = calculation(uinput1, uinput2, uanswer); // makes this value equal to the returned value (total) from the function
+			cout << "answer: " << returnedtotal << endl << endl << "enter any key to continue " << endl;// two endl to separate this from the next calculation
+			cin >> answer;
+			system("cls");
 		}
 		if (answer == 3) { // if the user wants to use three numbers
 			cout << "input three numbers to use in calculation" << endl;
@@ -79,7 +79,9 @@ int main() {
 			triple(uinput1, uinput2, uinput3, uanswer, answer); // calls on the calculation function to use the numbers inputted by user for calculation
 
 			double returnedtotal = triple(uinput1, uinput2, uinput3, uanswer, answer); // makes this value equal to the returned value (total) from the function
-			cout << returnedtotal << endl << endl; // two endl to separate this from the next calculation
+			cout << "answer: " <<  returnedtotal << endl << endl << "enter any key to continue " << endl; // two endl to separate this from the next calculation
+			cin >> answer;
+			system("cls");
 		}
 	}
 }
