@@ -1,0 +1,5 @@
+﻿  rockpaperscissors.cpp
+C:\Users\502218\Documents\GitHub\hello-world\test\Rock, paper, scissors\rockpaperscissors.cpp(19): warning C4715: 'rock': not all control paths return a value
+C:\Users\502218\Documents\GitHub\hello-world\test\Rock, paper, scissors\rockpaperscissors.cpp(55): warning C4715: 'scissors': not all control paths return a value
+C:\Users\502218\Documents\GitHub\hello-world\test\Rock, paper, scissors\rockpaperscissors.cpp(37): warning C4715: 'paper': not all control paths return a value
+  Rock, paper, scissors.vcxproj -> C:\Users\502218\Documents\GitHub\hello-world\test\Rock, paper, scissors\x64\Debug\Rock, paper, scissors.exe
