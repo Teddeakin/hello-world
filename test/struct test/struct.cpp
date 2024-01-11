@@ -16,7 +16,7 @@ void catagories() {
 
 }
 
-void drinks() {
+void drink() {
 	cout << endl << "1. " <<  coke.name[0] << "(" << coke.price << ") " << "2. " << sprite.name[1] << "(" << sprite.price << ") " << "3. " << water.name[2] << "(" << water.price << ")" << endl;
 
 }
@@ -28,9 +28,8 @@ int main() {
 	cin >> user;
 
 	if (user == 1) {
-		drinks();
+		drink();
 	}
 	double total1 = total + coke.price;
 	cout << total1;
-
 }
