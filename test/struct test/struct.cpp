@@ -3,33 +3,69 @@
 #include<fstream>
 
 using namespace std;
-struct drinks {
-	string name[3] = { "coke", "sprite", "water"};
-	double price = 1.2;
-}coke, sprite, water;
 
-void catagories() {
-	cout << "MENU" << endl << "=======" << endl << endl;
-	cout << "1. drinks" << endl;
-	cout << "2. crisps" << endl;
-	cout << "3. chocolate" << endl;
+struct product {
+	string name;
+	double price;
+	int catagory;
+	int stock;
+};
 
-}
+struct catagories {
+	string name;
+};
 
-void drink() {
-	cout << endl << "1. " <<  coke.name[0] << "(" << coke.price << ") " << "2. " << sprite.name[1] << "(" << sprite.price << ") " << "3. " << water.name[2] << "(" << water.price << ")" << endl;
+struct money {
+	int total;
+};
 
-}
+int menu();
 
-int main() {
-	int user;
-	int total = 0;
-	catagories();
-	cin >> user;
 
-	if (user == 1) {
-		drink();
+int main(){
+	int count = 1;
+	product item[3]{
+	{"coke", 1.50, 1, 2},
+	{"hot chocolate", 1, 2, 2},
+	{"fanta", 1.50, 1, 2}
+	};
+	int catagory = menu();
+
+	for (int i = 0; i < 3; i++) {
+		if (item[i].stock < 1) {
+
+			break;
+		}
+		if (item[i].catagory == 1) {
+			cout << count++ << item[i].name << endl;
+			item[i].stock--;
+		}
+		else if (item[i].catagory == 2) {
+			cout << count++ << item[i].name << endl;
+			item[i].stock--;
+		}
+		else if (item[i].catagory == 3) {
+			cout << count++ << item[i].name << endl;
+			item[i].stock--;
+		}
+		else if (item[i].catagory == 4) {
+			cout << count++ << item[i].name << endl;
+			item[i].stock--;
+		}
 	}
-	double total1 = total + coke.price;
-	cout << total1;
 }
+
+int menu() {
+	int ID;
+	catagories menu[2]{
+	{"cold drinks"},
+	{"hot drinks"}
+	};
+	cout << "MENU" << endl << "===========" << endl << endl;
+	for (int i = 0; i < 2; i++) {
+		cout << i + 1 << ": " << menu[i].name << endl;
+	}
+	cin >> ID;
+	return ID;
+}
+
