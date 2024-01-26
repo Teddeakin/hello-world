@@ -1,2 +1,3 @@
 ﻿  struct.cpp
-  struct test.vcxproj -> C:\Users\502218.ACADEMIC\Documents\GitHub\hello-world\test\struct test\x64\Debug\struct test.exe
+C:\Users\voidc\OneDrive\Documents\GitHub\hello-world\test\struct test\struct.cpp(149,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  struct test.vcxproj -> C:\Users\voidc\OneDrive\Documents\GitHub\hello-world\test\struct test\x64\Debug\struct test.exe

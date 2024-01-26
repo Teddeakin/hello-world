@@ -19,7 +19,10 @@ struct catagories {
 
 int menu();
 
-int recommendation(int order, product);
+void display(struct product item[], int catagory);
+
+
+void recommendation(int order, product item[]);
 
 int main() {
 	int order;
@@ -29,8 +32,8 @@ int main() {
 	{"coke", 1.50, 1, 2, 301},
 	{"fanta", 1.50, 1, 2, 302},
 	{"sprite", 1.50, 1, 2, 303},
-	{"lucozade", 2.00, 1, 1, 304},
-	{"Water", 1, 1, 5, 305},
+	{"lucozade", 2.00, 1, 2, 304},
+	{"Water", 1.0, 1, 5, 305},
 	{"hot chocolate", 1.20, 2, 2, 306},
 	{"Coffee", 2.5, 2, 4, 307},
 	{"Tea", 2.2, 2, 4, 308},
@@ -44,47 +47,20 @@ int main() {
 	while (count == 0) {
 
 
-		int catagory = menu(); // need to add function if they don't input valid number
+		int catagory = menu();
 
 		if (catagory == 4) {
 			break;
 		}
 
-		for (int i = 0; i < 14; i++) {
-			if (catagory == 1) {
-				if (item[i].catagory == 1) {
-					if (item[i].stock < 1) {
-						cout << item[i].code << ": " << item[i].name << " OUT OFF STOCK!!!" << endl; // put this into another file?
-					}
-					else {
-						cout << item[i].code << ": " << item[i].name << " " << item[i].price << endl;
-					}
-				}
-			}
-			if (catagory == 2) {
-				if (item[i].catagory == 2) {
-					if (item[i].stock < 1) {
-						cout << item[i].code << ": " << item[i].name << " OUT OFF STOCK!!!" << endl;
-					}
-					else {
-						cout << item[i].code << ": " << item[i].name << " " << item[i].price << endl;
-					}
-				}
-			}
-			if (catagory == 3) {
-				if (item[i].catagory == 3) {
-					if (item[i].stock < 1) {
-						cout << item[i].code << ": " << item[i].name << " OUT OFF STOCK!!!" << endl;
-					}
-					else {
-						cout << item[i].code << ": " << item[i].name << " " << item[i].price << endl;
-					}
-				}
-			}
-		}
+		display(item, catagory);
 
-		cin >> order;
-		for (int a = 0; a < 14; a++) { // put this into a function
+		while (!(cin >> order) || order > 313 || order <= 300) {
+			cout << "please enter valid number" << endl;
+			cin.clear(); // clears the previous input so that it can be repeated
+			cin.ignore(123, '\n');
+		}
+		for (int a = 0; a < 14; a++) {
 			if (order == item[a].code && item[a].stock < 1) {
 				cout << "ITEM OUT OFF STOCK!" << endl << endl;
 			}
@@ -93,17 +69,19 @@ int main() {
 				total = total + item[a].price;
 				cout << "TOTAL: " << total << endl << endl;
 				item[a].stock--;
-				recommendation(item[a].catagory, item[13]);
+				recommendation(item[a].catagory, item);
 			}
 		}
 	}
 
-	double user_credits = 0; // put this into a function
+	double user_credits = 0;
 	while (user_credits < total) {
 		total = total - user_credits;
 		cout << "TOTAL OWED: " << total << endl;
 		cout << "Please input credits" << endl;
-		cin >> user_credits;
+		while (!(cin >> user_credits)) {
+			cout << "please input valid change" << endl;
+		}
 		if (user_credits > total) {
 			user_credits = user_credits - total;
 			cout << "change: " << user_credits << endl;
@@ -123,21 +101,62 @@ int menu() {
 	cout << "MENU" << endl << "===========" << endl << endl;
 	for (int i = 0; i < 4; i++) {
 		cout << i + 1 << ": " << menu[i].name << endl;
+	}while (!(cin >> ID) || ID > 4 || ID <= 0) {
+		cout << "please enter valid number" << endl;
+		cin.clear(); // clears the previous input so that it can be repeated
+		cin.ignore(123, '\n');
 	}
-	cin >> ID;
 	cout << endl;
 	return ID;
 }
 
-int recommendation(int order, product item) {
-	srand(time(0));
-	int counter = 0;
-	for (int a = 0; a < 14; a++) {
-		product item[13];
-		if (order == item[a].catagory) {
-			counter++; // make this correct
+void display(struct product item[], int catagory) {
+	for (int i = 0; i < 14; i++) {
+		if (catagory == 1) {
+			if (item[i].catagory == 1) {
+				if (item[i].stock < 1) {
+					cout << item[i].code << ": " << item[i].name << " OUT OFF STOCK!!!" << endl;
+				}
+				else {
+					cout << item[i].code << ": " << item[i].name << " " << item[i].price << endl;
+				}
+			}
+		}
+		if (catagory == 2) {
+			if (item[i].catagory == 2) {
+				if (item[i].stock < 1) {
+					cout << item[i].code << ": " << item[i].name << " OUT OFF STOCK!!!" << endl;
+				}
+				else {
+					cout << item[i].code << ": " << item[i].name << " " << item[i].price << endl;
+				}
+			}
+		}
+		if (catagory == 3) {
+			if (item[i].catagory == 3) {
+				if (item[i].stock < 1) {
+					cout << item[i].code << ": " << item[i].name << " OUT OFF STOCK!!!" << endl;
+				}
+				else {
+					cout << item[i].code << ": " << item[i].name << " " << item[i].price << endl;
+				}
+			}
 		}
 	}
-	int random = 1 + rand() % counter;
-	return random;
+}
+
+void recommendation(int order, product item[]) {
+	srand(time(0));
+	if (order == 1) {
+		int random1 = 7 + rand() % 12;
+		cout << "Based on your order we recommend " << item[random1].name << endl;
+	}
+	else if (order == 2) {
+		int random2 = 7 + rand() % 12;
+		cout << "Based on your order we recommend " << item[random2].name << endl;
+	}
+	else if (order == 3) {
+		int random3 = rand() % 5;
+		cout << "Based on your order we recommend " << item[random3].name << endl;
+	}
 }
