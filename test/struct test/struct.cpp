@@ -2,6 +2,7 @@
 #include<string>
 #include<fstream>
 #include<cstdlib>
+#include<ctime>
 
 using namespace std;
 
@@ -21,9 +22,6 @@ int menu();
 
 void display(struct product item[], int catagory);
 
-
-void recommendation(int order, product item[]);
-
 int main() {
 	int order;
 	double total = 0;
@@ -32,7 +30,7 @@ int main() {
 	{"coke", 1.50, 1, 2, 301},
 	{"fanta", 1.50, 1, 2, 302},
 	{"sprite", 1.50, 1, 2, 303},
-	{"lucozade", 2.00, 1, 2, 304},
+	{"lucozade", 2.00, 1, 1, 304},
 	{"Water", 1.0, 1, 5, 305},
 	{"hot chocolate", 1.20, 2, 2, 306},
 	{"Coffee", 2.5, 2, 4, 307},
@@ -69,7 +67,19 @@ int main() {
 				total = total + item[a].price;
 				cout << "TOTAL: " << total << endl << endl;
 				item[a].stock--;
-				recommendation(item[a].catagory, item);
+				srand(time(0));
+				if (item[a].catagory == 1) {
+					int random1 = rand() % 7;
+					cout << "Based on your order we recommend " << item[random1 + 4].name << item[0].name << endl;
+				}
+				else if (item[a].catagory == 2) {
+					int random2 = rand() % 1;
+					cout << "Based on your order we recommend " << random2 << endl;
+				}
+				else if (item[a].catagory == 3) {
+					int random3 = rand() % 5;
+					cout << "Based on your order we recommend " << item[random3].name << endl;
+				}
 			}
 		}
 	}
@@ -142,21 +152,5 @@ void display(struct product item[], int catagory) {
 				}
 			}
 		}
-	}
-}
-
-void recommendation(int order, product item[]) {
-	srand(time(0));
-	if (order == 1) {
-		int random1 = 7 + rand() % 12;
-		cout << "Based on your order we recommend " << item[random1].name << endl;
-	}
-	else if (order == 2) {
-		int random2 = 7 + rand() % 12;
-		cout << "Based on your order we recommend " << item[random2].name << endl;
-	}
-	else if (order == 3) {
-		int random3 = rand() % 5;
-		cout << "Based on your order we recommend " << item[random3].name << endl;
 	}
 }
