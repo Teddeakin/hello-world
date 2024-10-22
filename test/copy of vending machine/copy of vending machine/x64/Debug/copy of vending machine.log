@@ -1,0 +1,3 @@
+﻿  copy of vending machine.cpp
+C:\Users\voidc\OneDrive\Documents\GitHub\hello-world\test\copy of vending machine\copy of vending machine\copy of vending machine.cpp(151,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  copy of vending machine.vcxproj -> C:\Users\voidc\OneDrive\Documents\GitHub\hello-world\test\copy of vending machine\copy of vending machine\x64\Debug\copy of vending machine.exe

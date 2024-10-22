@@ -3,24 +3,9 @@
 #include<fstream>
 #include<cstdlib>
 #include<ctime>
+#include"header.h"
 
 using namespace std;
-
-struct product {
-	string name;
-	double price;
-	int catagory;
-	int stock;
-	int code;
-};
-
-struct catagories {
-	string name;
-};
-
-int menu();
-
-void display(struct product item[], int catagory);
 
 int main() {
 	int order;
@@ -67,19 +52,7 @@ int main() {
 				total = total + item[a].price;
 				cout << "TOTAL: " << total << endl << endl;
 				item[a].stock--;
-				srand(time(0));
-				if (item[a].catagory == 1) {
-					int random1 = rand() % 7;
-					cout << "Based on your order we recommend " << item[random1 + 4].name << item[0].name << endl;
-				}
-				else if (item[a].catagory == 2) {
-					int random2 = rand() % 1;
-					cout << "Based on your order we recommend " << random2 << endl;
-				}
-				else if (item[a].catagory == 3) {
-					int random3 = rand() % 5;
-					cout << "Based on your order we recommend " << item[random3].name << endl;
-				}
+				recommendation(item[a].catagory, item);
 			}
 		}
 	}
@@ -100,57 +73,3 @@ int main() {
 	}
 }
 
-int menu() {
-	int ID;
-	catagories menu[4]{
-	{"cold drinks"},
-	{"hot drinks"},
-	{"Snacks"},
-	{"EXIT"}
-	};
-	cout << "MENU" << endl << "===========" << endl << endl;
-	for (int i = 0; i < 4; i++) {
-		cout << i + 1 << ": " << menu[i].name << endl;
-	}while (!(cin >> ID) || ID > 4 || ID <= 0) {
-		cout << "please enter valid number" << endl;
-		cin.clear(); // clears the previous input so that it can be repeated
-		cin.ignore(123, '\n');
-	}
-	cout << endl;
-	return ID;
-}
-
-void display(struct product item[], int catagory) {
-	for (int i = 0; i < 14; i++) {
-		if (catagory == 1) {
-			if (item[i].catagory == 1) {
-				if (item[i].stock < 1) {
-					cout << item[i].code << ": " << item[i].name << " OUT OFF STOCK!!!" << endl;
-				}
-				else {
-					cout << item[i].code << ": " << item[i].name << " " << item[i].price << endl;
-				}
-			}
-		}
-		if (catagory == 2) {
-			if (item[i].catagory == 2) {
-				if (item[i].stock < 1) {
-					cout << item[i].code << ": " << item[i].name << " OUT OFF STOCK!!!" << endl;
-				}
-				else {
-					cout << item[i].code << ": " << item[i].name << " " << item[i].price << endl;
-				}
-			}
-		}
-		if (catagory == 3) {
-			if (item[i].catagory == 3) {
-				if (item[i].stock < 1) {
-					cout << item[i].code << ": " << item[i].name << " OUT OFF STOCK!!!" << endl;
-				}
-				else {
-					cout << item[i].code << ": " << item[i].name << " " << item[i].price << endl;
-				}
-			}
-		}
-	}
-}

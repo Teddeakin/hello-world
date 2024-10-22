@@ -1,4 +1,10 @@
 #pragma once
+#include<iostream>
+#include<string>
+#include<fstream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
 struct product {
 	string name;
 	double price;
@@ -13,4 +19,7 @@ struct catagories {
 
 int menu();
 
-int recommendation(int order, product);
+void display(struct product item[], int catagory);
+
+
+void recommendation(int order, product item[]);
